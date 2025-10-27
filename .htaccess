@@ -1,0 +1,12 @@
+DirectoryIndex index.php
+
+# Habilitar mod_rewrite
+RewriteEngine On
+
+# Redireccionar la carpeta raíz a index.php
+RewriteRule ^$ index.php [L]
+
+# Opcional: redireccionar URLs sin extensión
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^([^.]+)$ $1.php [L]

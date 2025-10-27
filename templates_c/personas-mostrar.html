@@ -1,0 +1,71 @@
+{extends file="layout.html"}
+
+{block name="usuario"}
+{$user}
+{/block}
+
+{block name="cuerpo"}
+
+<h2>Detalles del Amigo</h2>
+<br>
+
+<table border="1">
+  <tr>
+    <td><b>Foto:</b></td>
+    <td>
+      {if $persona.per_foto && $persona.per_foto != '' && $persona.per_foto != 'default.jpg'}
+        <img src="{$uploads_url}{$persona.per_foto}" alt="Foto" class="foto-detalle">
+      {else}
+        <img src="{$uploads_url}default.jpg" alt="Sin foto" class="foto-detalle">
+      {/if}
+    </td>
+  </tr>
+  <tr>
+    <td><b>C.I.:</b></td>
+    <td>{$persona.per_cod}</td>
+  </tr>
+  <tr>
+    <td><b>Nombres:</b></td>
+    <td>{$persona.per_nom}</td>
+  </tr>
+  <tr>
+    <td><b>Apellidos:</b></td>
+    <td>{$persona.per_appm}</td>
+  </tr>
+  <tr>
+    <td><b>Profesión:</b></td>
+    <td>{$persona.per_prof}</td>
+  </tr>
+  <tr>
+    <td><b>Teléfono:</b></td>
+    <td>{$persona.per_telf}</td>
+  </tr>
+  <tr>
+    <td><b>Celular:</b></td>
+    <td>{$persona.per_cel}</td>
+  </tr>
+  <tr>
+    <td><b>Email:</b></td>
+    <td>{$persona.per_email}</td>
+  </tr>
+  <tr>
+    <td><b>Dirección:</b></td>
+    <td>{$persona.per_dir}</td>
+  </tr>
+  <tr>
+    <td><b>Fecha de Nacimiento:</b></td>
+    <td>{$persona.per_fnac}</td>
+  </tr>
+  <tr>
+    <td><b>Lugar de Nacimiento:</b></td>
+    <td>{$persona.per_lnac}</td>
+  </tr>
+</table>
+
+<br>
+<div>
+  <a href="personas.php?opcion=3&per_cod={$persona.per_cod}">Modificar</a>
+  <a href="personas.php">Volver al Listado</a>
+</div>
+
+{/block}

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang=es>
+
+<head>
+    <meta charset="UTF-8">
+    <title>{$titulo}</title>
+    <style type="text/css">
+        .active {
+            text-decoration: none;
+            color: blue;
+        }
+
+        header {
+            height: 30px;
+            width: 100%;
+            color: black;
+            background-color: buttonface;
+        }
+
+        footer {
+            height: 30px;
+            width: 100%;
+            color: black;
+            background-color: buttonface;
+        }
+
+        /* Estilos mínimos para imágenes */
+        img {
+            display: block;
+            max-width: 100%;
+            height: auto;
+        }
+        
+        .foto-listado {
+            width: 50px;
+            height: 50px;
+            object-fit: cover;
+        }
+        
+        .foto-detalle {
+            width: 150px;
+            height: 150px;
+            object-fit: cover;
+        }
+        
+        .foto-formulario {
+            width: 100px;
+            height: 100px;
+            object-fit: cover;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <nav>
+            {section name=pos loop= $menu}
+            {if $path eq $path|cat:$menu[pos].url}
+            <a class='active' href={$path}{$menu[pos].url}>{$menu[pos].name}</a>
+            {else}
+            <a href={$path}{$menu[pos].url}>{$menu[pos].name}</a>
+            {/if}
+
+            {/section}
+
+            {block name="usuario"} {/block}
+        </nav>
+    </header>
+
+    {block name="cuerpo"}{/block}
+
+    <footer>
+        Copyright (c) {$smarty.now|date_format:'%Y'}
+    </footer>
+</body>
+
+</html>

@@ -1,0 +1,47 @@
+{extends file="layout.html"}
+
+{block name="usuario"}
+{$user}
+{/block}
+
+{block name="cuerpo"}
+ <p align="left"> <b>{$titulo2}</b></td></p>
+ <br>
+ 
+ {if $smarty.session.nivel == 2 }
+ <a href="personas.php?opcion=1"> Nuevo</a>
+ {/if}
+ 
+ <table border="1">
+  <tr>
+    <td><b>Foto</b></td>
+    <td><b>C.I.</b></td>
+    <td><b>Nombres Completo</b></td>
+    <td><b>Teléfono</b></td>
+    <td><b>Celular</b></td>
+    <td><b>Email</b></td>
+    <td><b>Mostrar</b></td>
+    <td><b>Modificar</b></td>
+    <td><b>Eliminar</b></td>
+  </tr>
+  {section name=pos loop= $amigos}
+  <tr>
+    <td>
+      {if $amigos[pos].per_foto && $amigos[pos].per_foto != '' && $amigos[pos].per_foto != 'default.jpg'}
+        <img src="{$uploads_url}{$amigos[pos].per_foto}" alt="Foto" class="foto-listado">
+      {else}
+        <img src="{$uploads_url}default.jpg" alt="Sin foto" class="foto-listado">
+      {/if}
+    </td>
+    <td>{$amigos[pos].per_cod}</td>
+    <td>{$amigos[pos].per_appm} {$amigos[pos].per_nom}</td>
+    <td>{$amigos[pos].per_telf}</td>
+    <td>{$amigos[pos].per_cel}</td>
+    <td>{$amigos[pos].per_email}</td>
+    <td><a href="personas.php?opcion=2&per_cod={$amigos[pos].per_cod}">Mostrar</a></td>
+    <td><a href="personas.php?opcion=3&per_cod={$amigos[pos].per_cod}">Editar</a></td>
+    <td><a href="personas.php?opcion=4&per_cod={$amigos[pos].per_cod}">Eliminar</a></td>
+  </tr>
+  {/section}
+</table><br>
+{/block}
